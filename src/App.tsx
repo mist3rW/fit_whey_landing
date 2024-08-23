@@ -8,27 +8,31 @@ import CustomerReview from './components/home-section/customer-review';
 import FloatingButton from './components/home-section/floating-button-drawer';
 import FlashSale from './components/home-section/flash-sale';
 import ProductSelection from './components/home-section/product-selection';
+import Notify from './components/home-section/notify';
 
 function App() {
   return (
     <>
-      <main className="max-w-[1050px] flex flex-col mx-auto relative">
-        <Header />
-        <UserTier />
-        <section>
-          <Gallery />
-          <FlashSale />
-          <ProductSelection />
-        </section>
-        <div className="w-full h-2 bg-[#fafafa] py-2" />
-        <section>
-          <ProductInfoTabs />
-        </section>
-        <div className="w-full h-2 bg-[#fafafa] py-2" />
-        <BundleSet />
-        <div className="w-full h-2 bg-[#fafafa] py-2" />
-        <CustomerReview />
-        <FloatingButton />
+      <main className="relative">
+        <div className="max-w-[1050px] flex flex-col mx-auto relative">
+          <Header />
+          <UserTier />
+          <section>
+            <Gallery />
+            <FlashSale />
+            <ProductSelection />
+          </section>
+          <div className="w-full h-2 bg-[#fafafa] py-2" />
+          <section>
+            <ProductInfoTabs />
+          </section>
+          <div className="w-full h-2 bg-[#fafafa] py-2" />
+          <BundleSet />
+          <div className="w-full h-2 bg-[#fafafa] py-2" />
+          <CustomerReview />
+          <FloatingButton />
+        </div>
+        <Notify />
       </main>
     </>
   );

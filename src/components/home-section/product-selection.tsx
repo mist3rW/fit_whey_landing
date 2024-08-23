@@ -20,6 +20,7 @@ import { formatPrice } from '../../lib/utils';
 import { CircleAlert, Star } from 'lucide-react';
 import WheyButton from '../whey-button';
 import pointIcon from '../../assets/icons/point-clear-icon.svg';
+import supplementImg from '../../assets/supplement_fact.webp';
 
 export default function ProductSelection() {
   const {
@@ -100,7 +101,7 @@ export default function ProductSelection() {
           </p>
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         {sizes.map((size) => (
           <WheyButton
             key={size.size}
@@ -124,19 +125,11 @@ export default function ProductSelection() {
           <DialogHeader>
             <DialogTitle>Supplement Info</DialogTitle>
             <DialogDescription>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos rem expedita pariatur? Non minima laborum, architecto
-              inventore accusantium corporis neque dolorum porro aliquid! Libero
-              aperiam consequuntur fuga ratione repellendus voluptatem eos rerum
-              ducimus, molestiae nisi maxime perferendis tempore veniam ipsa quo
-              sequi neque voluptate expedita error est consequatur accusantium
-              dolorem.
+              <img src={supplementImg} alt="" />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
       </Dialog>
-
-      <button></button>
     </div>
   );
 }

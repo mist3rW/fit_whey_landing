@@ -3,8 +3,8 @@ import directionImg from '../../assets/baam-directions.png';
 
 export default function ProductInfoTabs() {
   return (
-    <Tabs defaultValue="overview" className="py-4 overflow-x-auto">
-      <TabsList>
+    <Tabs defaultValue="overview" className="py-2">
+      <TabsList className="w-full overflow-x-auto items-center justify-start">
         <TabsTrigger value="overview">Overview</TabsTrigger>
         <TabsTrigger value="benefit">Benefit</TabsTrigger>
         <TabsTrigger value="direction">Direction</TabsTrigger>

@@ -24,10 +24,7 @@ export const flavors = [
     title: 'Cafe Mocha',
     isNew: false,
   },
-  {
-    title: 'Super Yummy Japanese Home Made Orange Yuzu Woo hoo',
-    isNew: false,
-  },
+
   {
     title: 'Matcha Green Tea',
     isNew: false,

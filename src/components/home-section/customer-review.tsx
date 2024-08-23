@@ -132,7 +132,7 @@ function ReviewCard({ review }: ReviewCardProps) {
           )}
           <p className="text-sm font-thin my-4">{review.review}</p>
           {review.attachment && (
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               {Array.from({ length: 6 }).map((_, index) => (
                 <img
                   key={index}

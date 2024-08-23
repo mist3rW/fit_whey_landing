@@ -19,7 +19,7 @@ import { toast } from 'sonner';
 
 export default function FloatingButton() {
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const {
     setSelectedSize,
     setRegularPrice,
@@ -51,13 +51,13 @@ export default function FloatingButton() {
             isFavorite ? 'fill-yellow-400' : 'fill-gray-300'
           )}
         />
-        <Drawer>
+        <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
           <DrawerTrigger className="w-full bg-blue-600 py-2 text-white rounded-md">
             Add to Cart
           </DrawerTrigger>
-          <DrawerContent className="w-fit mx-auto">
+          <DrawerContent className="">
             <DrawerHeader>
-              <DrawerTitle className="max-w-5xl mx-auto">
+              <DrawerTitle>
                 <DrawerClose className="text-right w-full">X</DrawerClose>
                 <div className="flex flex-col justify-center items-center md:flex-row gap-4 w-full">
                   <div>
@@ -68,23 +68,21 @@ export default function FloatingButton() {
                     />
                   </div>
                   <div>
-                    <p className="text-lg font-bold">
-                      Baam 100% My Whey Yoo Hoo BCAA Glutamine
+                    <p className="text-sm md:text-lg font-bold">
+                      Baam 100% My Whey
                     </p>
-                    <p className="text-gray-400 font-thin text-sm">
+                    <p className="text-gray-400 font-thin text-xs md:text-sm">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Facilis ipsa illo perferendis cupiditate atque nesciunt
-                      quibusdam modi recusandae delectus quas.
                     </p>
                     {regularPrice > 0 && (
-                      <div className="my-4">
-                        <p className=" font-bold">
+                      <div className="my-2">
+                        <p className="text-sm md:text-base font-bold">
                           Price: {formatPrice(salePrice)}
-                          <span className="text-sm line-through text-gray-400 font-medium ml-2">
+                          <span className="text-xs md:text-sm line-through text-gray-400 font-medium ml-2">
                             {formatPrice(regularPrice)}
                           </span>
                         </p>
-                        <p className="text-red-500 text-xl font-bold">
+                        <p className="text-red-500 text-sm md:text-xl font-bold">
                           Your Price: {formatPrice(memberPrice)}
                         </p>
                       </div>
@@ -92,7 +90,7 @@ export default function FloatingButton() {
                   </div>
                 </div>
               </DrawerTitle>
-              <DrawerDescription className="max-w-5xl mx-auto">
+              <DrawerDescription>
                 <div className="w-full bg-gray-100 h-0.5" />
                 <div className="py-2">
                   <p className="font-bold text-blue-600">
@@ -105,20 +103,23 @@ export default function FloatingButton() {
                     Size
                     <span className="font-thin">(Select 1)</span>
                   </p>
-                  {sizes.map((size) => (
-                    <WheyButton
-                      key={size.size}
-                      onClick={() => {
-                        setSelectedSize(size.size);
-                        setRegularPrice(size.regular_price);
-                        setSalePrice(size.sale_price);
-                        setMemberPrice(size.member_price);
-                      }}
-                      isSelected={selectedSize === size.size}
-                    >
-                      {size.size}
-                    </WheyButton>
-                  ))}
+                  <div className="flex gap-2 flex-wrap w-full">
+                    {sizes.map((size) => (
+                      <WheyButton
+                        key={size.size}
+                        className="text-xs md:text-base"
+                        onClick={() => {
+                          setSelectedSize(size.size);
+                          setRegularPrice(size.regular_price);
+                          setSalePrice(size.sale_price);
+                          setMemberPrice(size.member_price);
+                        }}
+                        isSelected={selectedSize === size.size}
+                      >
+                        {size.size}
+                      </WheyButton>
+                    ))}
+                  </div>
                 </div>
                 <div className="w-full bg-gray-100 h-0.5 my-4" />
                 <div className="space-y-2 space-x-2">
@@ -126,17 +127,20 @@ export default function FloatingButton() {
                     Flavor / Selections{' '}
                     <span className="font-thin">(Select 1)</span>
                   </p>
-                  {flavors.map((flavor) => (
-                    <WheyButton
-                      key={flavor.title}
-                      isNew={flavor.isNew}
-                      onClick={() => setSelectedFlavor(flavor.title)}
-                      isSelected={selectedFlavor === flavor.title}
-                      disabled={flavor.title === 'Cafe Mocha'}
-                    >
-                      {flavor.title}
-                    </WheyButton>
-                  ))}
+                  <div className="flex gap-2 flex-wrap w-full ">
+                    {flavors.map((flavor) => (
+                      <WheyButton
+                        key={flavor.title}
+                        className="text-xs md:text-base"
+                        isNew={flavor.isNew}
+                        onClick={() => setSelectedFlavor(flavor.title)}
+                        isSelected={selectedFlavor === flavor.title}
+                        disabled={flavor.title === 'Cafe Mocha'}
+                      >
+                        {flavor.title}
+                      </WheyButton>
+                    ))}
+                  </div>
                 </div>
                 <div className="flex justify-between items-center">
                   <div className="font-bold">Quantity</div>
@@ -181,10 +185,7 @@ export default function FloatingButton() {
                       ${selectedSize}
                      ${selectedFlavor} Flavor
                        has been added to your cart
-                    `,
-                      {
-                        position: 'top-center',
-                      }
+                    `
                     );
                     addToCart({
                       name: 'Baam 100% My Whey',
@@ -193,6 +194,7 @@ export default function FloatingButton() {
                       size: selectedSize,
                       price: memberPrice,
                     });
+                    setIsDrawerOpen(false);
                   }}
                   className="w-full bg-red-500 hover:bg-red-600"
                   disabled={!selectedSize || !selectedFlavor}

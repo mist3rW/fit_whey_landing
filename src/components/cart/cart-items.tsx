@@ -17,7 +17,7 @@ import { Button } from '../ui/button';
 
 export default function CartItems() {
   const { cart, addToCart, removeFromCart } = useCartStore();
-  console.log('cart', cart);
+
   const totalPrice = useMemo(() => {
     return cart.reduce((acc, item) => {
       return acc + item.price * item.quantity;
