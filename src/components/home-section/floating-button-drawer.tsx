@@ -16,6 +16,7 @@ import WheyButton from '../whey-button';
 import { flavors, sizes } from '../../data/product';
 import { useCartStore, useProductStore } from '../../lib/store';
 import { toast } from 'sonner';
+import { ScrollArea } from '../ui/scroll-area';
 
 export default function FloatingButton() {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -91,57 +92,59 @@ export default function FloatingButton() {
                 </div>
               </DrawerTitle>
               <DrawerDescription>
-                <div className="w-full bg-gray-100 h-0.5" />
-                <div className="py-2">
-                  <p className="font-bold text-blue-600">
-                    Please select your options
-                  </p>
-                  <p className="text-orange-500 text-right">EXP: 20/2021</p>
-                </div>
-                <div className="space-y-2 space-x-2">
-                  <p className="font-bold">
-                    Size
-                    <span className="font-thin">(Select 1)</span>
-                  </p>
-                  <div className="flex gap-2 flex-wrap w-full">
-                    {sizes.map((size) => (
-                      <WheyButton
-                        key={size.size}
-                        className="text-xs md:text-base"
-                        onClick={() => {
-                          setSelectedSize(size.size);
-                          setRegularPrice(size.regular_price);
-                          setSalePrice(size.sale_price);
-                          setMemberPrice(size.member_price);
-                        }}
-                        isSelected={selectedSize === size.size}
-                      >
-                        {size.size}
-                      </WheyButton>
-                    ))}
+                <ScrollArea className="h-[300px] w-full rounded-md border p-4">
+                  <div className="w-full bg-gray-100 h-0.5" />
+                  <div className="py-2">
+                    <p className="font-bold text-blue-600">
+                      Please select your options
+                    </p>
+                    <p className="text-orange-500 text-right">EXP: 20/2021</p>
                   </div>
-                </div>
-                <div className="w-full bg-gray-100 h-0.5 my-4" />
-                <div className="space-y-2 space-x-2">
-                  <p className="font-bold">
-                    Flavor / Selections{' '}
-                    <span className="font-thin">(Select 1)</span>
-                  </p>
-                  <div className="flex gap-2 flex-wrap w-full ">
-                    {flavors.map((flavor) => (
-                      <WheyButton
-                        key={flavor.title}
-                        className="text-xs md:text-base"
-                        isNew={flavor.isNew}
-                        onClick={() => setSelectedFlavor(flavor.title)}
-                        isSelected={selectedFlavor === flavor.title}
-                        disabled={flavor.title === 'Cafe Mocha'}
-                      >
-                        {flavor.title}
-                      </WheyButton>
-                    ))}
+                  <div className="space-y-2 space-x-2">
+                    <p className="font-bold">
+                      Size
+                      <span className="font-thin">(Select 1)</span>
+                    </p>
+                    <div className="flex gap-2 flex-wrap w-full">
+                      {sizes.map((size) => (
+                        <WheyButton
+                          key={size.size}
+                          className="text-xs md:text-base"
+                          onClick={() => {
+                            setSelectedSize(size.size);
+                            setRegularPrice(size.regular_price);
+                            setSalePrice(size.sale_price);
+                            setMemberPrice(size.member_price);
+                          }}
+                          isSelected={selectedSize === size.size}
+                        >
+                          {size.size}
+                        </WheyButton>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                  <div className="w-full bg-gray-100 h-0.5 my-4" />
+                  <div className="space-y-2 space-x-2">
+                    <p className="font-bold">
+                      Flavor / Selections{' '}
+                      <span className="font-thin">(Select 1)</span>
+                    </p>
+                    <div className="flex gap-2 flex-wrap w-full ">
+                      {flavors.map((flavor) => (
+                        <WheyButton
+                          key={flavor.title}
+                          className="text-xs md:text-base"
+                          isNew={flavor.isNew}
+                          onClick={() => setSelectedFlavor(flavor.title)}
+                          isSelected={selectedFlavor === flavor.title}
+                          disabled={flavor.title === 'Cafe Mocha'}
+                        >
+                          {flavor.title}
+                        </WheyButton>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollArea>
                 <div className="flex justify-between items-center">
                   <div className="font-bold">Quantity</div>
                   <div className="flex items-center justify-stretch my-4 gap-2">

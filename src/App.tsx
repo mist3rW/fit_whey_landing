@@ -8,7 +8,6 @@ import CustomerReview from './components/home-section/customer-review';
 import FloatingButton from './components/home-section/floating-button-drawer';
 import FlashSale from './components/home-section/flash-sale';
 import ProductSelection from './components/home-section/product-selection';
-import Notify from './components/home-section/notify';
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
           <CustomerReview />
           <FloatingButton />
         </div>
-        <Notify />
       </main>
     </>
   );
