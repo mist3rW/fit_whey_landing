@@ -104,7 +104,9 @@ export default function CartItems() {
           <div className="flex items-center justify-between w-full max-w-2xl mt-2">
             <div>Total Price: {formatPrice(totalPrice)}</div>
             <div>
-              <Button>Checkout</Button>
+              <a href="https://nuttanan.com">
+                <Button>Checkout</Button>
+              </a>
             </div>
           </div>
         </>
