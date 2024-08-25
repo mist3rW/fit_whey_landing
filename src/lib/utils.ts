@@ -51,7 +51,7 @@ function getRemainingMinutes(
   return padWithZeros(minutes, 2);
 }
 function getRemainingHours(nowDayjs: dayjs.Dayjs, timestampDayjs: dayjs.Dayjs) {
-  const hours = timestampDayjs.diff(nowDayjs, 'hours') % 60;
+  const hours = timestampDayjs.diff(nowDayjs, 'hours') % 24;
   return padWithZeros(hours, 2);
 }
 function getRemainingDays(nowDayjs: dayjs.Dayjs, timestampDayjs: dayjs.Dayjs) {

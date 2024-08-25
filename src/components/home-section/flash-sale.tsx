@@ -11,7 +11,7 @@ export default function FlashSale() {
           <img src={flashIcon} alt="flash sale icon" />
         </span>
       </p>
-      <CountDown date={new Date(2024, 7, 25)} />
+      <CountDown date={new Date('2024-08-31T00:00:00+07:00')} />
     </div>
   );
 }
